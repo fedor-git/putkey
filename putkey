@@ -1,4 +1,12 @@
 #!/bin/bash
 ssh_key='id_rsa.pub'
 
-cat ~/.ssh/$ssh_key | ssh root@$1 "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >> ~/.ssh/authorized_keys"
+while getopts p:a: flag
+do
+    case "${flag}" in
+        p) sshport=${OPTARG};;
+        a) ipaddress=${OPTARG};;
+    esac
+done
+
+cat ~/.ssh/$ssh_key | ssh -p $sshport root@$ipaddress "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >> ~/.ssh/authorized_keys"

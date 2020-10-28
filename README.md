@@ -2,7 +2,10 @@
 Shell script to put ssh key in remote server
 # Setup in header
 - set your ssh key name
-- run: *putkey server_ip*
+- run: *putkey -a server_ip -p 22*
+### Options
+[-a ssh bind_address] // your server ip
+[-p ssh port] // default 22
 # Clone and install
 ```
 cd /tmp && \
