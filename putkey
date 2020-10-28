@@ -1,0 +1,4 @@
+#!/bin/bash
+ssh_key='id_rsa.pub'
+
+cat ~/.ssh/$ssh_key | ssh root@$1 "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >> ~/.ssh/authorized_keys"
